@@ -72,6 +72,14 @@ public class User {
         this.password = password;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == this)
