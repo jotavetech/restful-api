@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -33,7 +35,8 @@ public class User {
     @Size(groups = {CreateUser.class, UpdateUser.class}, min = 5, max = 60) // Groups = {CreateUser.class, UpdateUser.class} indica que a validação será feita para os grupos CreateUser e UpdateUser
     private String password;
 
-    //    private List<Task> tasks = new ArrayList<Task>();
+    @OneToMany(mappedBy = TABLE_NAME)
+    private List<Task> tasks = new ArrayList<Task>();
 
     public User() {
     }
