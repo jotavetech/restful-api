@@ -12,12 +12,11 @@ import java.util.Objects;
 
 
 @Entity // Indica que a classe User é uma entidade do banco de dados
-@Table(name = User.TABLE_NAME) // Indica que a tabela do banco de dados que representa a classe User se chama "user"
+@Table(name =  "\"user\"") // Indica que a tabela do banco de dados que representa a classe User se chama "user"
 public class User {
     public interface CreateUser {}
     public interface UpdateUser {}
 
-    public static final String TABLE_NAME = "user"; // Essa constante é usada para referenciar o nome da tabela do banco de dados em outras partes do código
 
     @Id // Indica que o atributo id é a chave primária da tabela
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Indica que o valor do atributo id é gerado automaticamente pelo banco de dados
@@ -35,7 +34,7 @@ public class User {
     @Size(groups = {CreateUser.class, UpdateUser.class}, min = 5, max = 60) // Groups = {CreateUser.class, UpdateUser.class} indica que a validação será feita para os grupos CreateUser e UpdateUser
     private String password;
 
-    @OneToMany(mappedBy = TABLE_NAME)
+    @OneToMany(mappedBy =  "user")
     private List<Task> tasks = new ArrayList<Task>();
 
     public User() {
