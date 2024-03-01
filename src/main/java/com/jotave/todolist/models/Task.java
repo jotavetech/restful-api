@@ -1,5 +1,6 @@
 package com.jotave.todolist.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -17,8 +18,9 @@ public class Task {
     @Column(name = "id", unique = true)
     private Long id;
 
-    @ManyToOne // relação
-    @JoinColumn(name = "user_id", nullable = false, updatable = false) // chave estrangeira
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "user_id", nullable = false, updatable = false)
     private User user;
 
     @Column(name = "description", length = 255, nullable = false)
